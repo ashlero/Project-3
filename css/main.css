@@ -1,1 +1,13 @@
 /* Place CSS styles here */
+body {
+  margin: 0;
+  background-color: #1f2b45;
+  text-align: center;
+}
+
+.h1 {
+  font-family: "Meddon", cursive;
+  font-weight: 400;
+  font-style: normal;
+  color: #ffffff;
+}
