@@ -24,8 +24,62 @@
 </head>
 
 <body>
-  <!-- Place your site's HTML here -->
-   <img src="./img/pastries.png" alt="">
+
+  <div class="scene">
+    <img src="./img/pastries.png" alt="Illustrated pastries" class="main">
+
+    <!-- Bite images -->
+    <img src="./img/strawberrytart-bite.png" alt="" class="bite bite-tart">
+    <img src="./img/croissant1-bite.png" alt="" class="bite bite-ctop">
+    <img src="./img/croissant2-bite.png" alt="" class="bite bite-cbottom">
+    <img src="./img/madeline2-bite.png" alt="" class="bite bite-mtop">
+    <img src="./img/madeline1-bite.png" alt="" class="bite bite-mbottom">
+    <img src="./img/macaroon1-bite.png" alt="" class="bite bite-macleft">
+    <img src="./img/macaroon2-bite.png" alt="" class="bite bite-macright">
+
+    <!-- Hotspots -->
+    <button class="hot tart" data-bite="bite-tart" aria-label="Strawberry tart">
+      <span class="tag top-center">Try Me!</span>
+    </button>
+
+    <button class="hot ctop" data-bite="bite-ctop" aria-label="Top croissant">
+      <span class="tag left-inside">Try Me!</span>
+    </button>
+
+    <button class="hot cbottom" data-bite="bite-cbottom" aria-label="Bottom croissant">
+      <span class="tag right-inside">Try Me!</span>
+    </button>
+
+    <button class="hot mtop" data-bite="bite-mtop" aria-label="Top madeleine cluster">
+      <span class="tag right-outside">Try Me!</span>
+    </button>
+
+    <button class="hot mbottom" data-bite="bite-mbottom" aria-label="Bottom madeleine cluster">
+      <span class="tag top-center">Try Me!</span>
+    </button>
+
+    <button class="hot macleft" data-bite="bite-macleft" aria-label="Left macaron cluster">
+      <span class="tag right-outside">Try Me!</span>
+    </button>
+
+    <button class="hot macright" data-bite="bite-macright" aria-label="Right macaron cluster">
+      <span class="tag left-outside">Try Me!</span>
+    </button>
+  </div>
+
+  <audio id="music" loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="music-box">
+    <button id="playBtn" class="music-btn" aria-label="Play music">Play</button>
+    <button id="muteBtn" class="music-btn" aria-label="Mute music">Mute</button>
+  </div>
+
+  <script src="script.js"></script>
 </body>
+</html>
+
 <script src="js/main.js"></script>
+</body>
 </html>

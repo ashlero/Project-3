@@ -1,1 +1,324 @@
-/* Place CSS styles here */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #493924;
+  font-family: Arial, sans-serif;
+  padding: 16px;
+}
+
+.scene {
+  position: relative;
+  width: min(92vw, 850px);
+  aspect-ratio: 1080 / 1600;
+}
+
+.main {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.bite {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 10;
+}
+
+.bite.show {
+  opacity: 1;
+}
+
+.hot {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.hot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  opacity: 0;
+  background-color: #fff8dc;
+  box-shadow: 0 0 0 #fff8dc;
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transform: scale(0.95);
+}
+
+.hot:hover::before,
+.hot:focus-visible::before {
+  opacity: 0.25;
+  transform: scale(1.04);
+  box-shadow: 0 0 18px #ffd27a, 0 0 34px #ffc86b;
+}
+
+.tag {
+  position: absolute;
+  opacity: 0;
+  background-color: #fff6e8;
+  color: #2f241d;
+  border: 2px solid #2f241d;
+  border-radius: 999px;
+  padding: 7px 13px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  box-shadow: 0 6px 12px #00000033;
+}
+
+.hot:hover .tag,
+.hot:focus-visible .tag,
+.hot.show-tag .tag {
+  opacity: 1;
+}
+
+.top-center {
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.hot:hover .top-center,
+.hot:focus-visible .top-center,
+.hot.show-tag .top-center {
+  transform: translateX(-50%) translateY(0);
+}
+
+.left-inside {
+  top: 10%;
+  left: 10%;
+  transform: translateY(8px);
+}
+
+.hot:hover .left-inside,
+.hot:focus-visible .left-inside,
+.hot.show-tag .left-inside {
+  transform: translateY(0);
+}
+
+.right-inside {
+  top: 10%;
+  left: 68%;
+  transform: translateY(8px);
+}
+
+.hot:hover .right-inside,
+.hot:focus-visible .right-inside,
+.hot.show-tag .right-inside {
+  transform: translateY(0);
+}
+
+.right-outside {
+  top: 30%;
+  left: 102%;
+  transform: translateY(8px);
+}
+
+.hot:hover .right-outside,
+.hot:focus-visible .right-outside,
+.hot.show-tag .right-outside {
+  transform: translateY(0);
+}
+
+.left-outside {
+  top: 18%;
+  right: 102%;
+  transform: translateY(8px);
+}
+
+.hot:hover .left-outside,
+.hot:focus-visible .left-outside,
+.hot.show-tag .left-outside {
+  transform: translateY(0);
+}
+
+/* hotspot positions */
+.tart {
+  top: 46%;
+  left: 12%;
+  width: 55%;
+  height: 34%;
+}
+
+.ctop {
+  top: 0%;
+  left: 50%;
+  width: 44%;
+  height: 25%;
+}
+
+.cbottom {
+  bottom: 2%;
+  left: 0%;
+  width: 35%;
+  height: 25%;
+}
+
+.mtop {
+  top: 24%;
+  right: 3%;
+  width: 28%;
+  height: 24%;
+}
+
+.mbottom {
+  bottom: 2%;
+  left: 45%;
+  width: 25%;
+  height: 18%;
+}
+
+.macleft {
+  top: 12%;
+  left: 0%;
+  width: 25%;
+  height: 25%;
+}
+
+.macright {
+  bottom: 0%;
+  right: 0%;
+  width: 25%;
+  height: 20%;
+}
+
+/* bite image positions */
+.bite-tart {
+  top: 46%;
+  left: 12%;
+  width: 55%;
+}
+
+.bite-ctop {
+  top: 0%;
+  left: 50%;
+  width: 44%;
+}
+
+.bite-cbottom {
+  bottom: 2%;
+  left: 0%;
+  width: 35%;
+}
+
+.bite-mtop {
+  top: 24%;
+  right: 3%;
+  width: 28%;
+}
+
+.bite-mbottom {
+  bottom: 2%;
+  left: 45%;
+  width: 25%;
+}
+
+.bite-macleft {
+  top: 12%;
+  left: 0%;
+  width: 25%;
+}
+
+.bite-macright {
+  bottom: 0%;
+  right: 0%;
+  width: 25%;
+}
+
+.music-box {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 12px;
+  z-index: 100;
+}
+
+.music-btn {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  background-color: #fff6e8;
+  color: #2f241d;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: outline 0.2s ease, transform 0.2s ease;
+}
+
+.music-btn:hover,
+.music-btn:focus-visible {
+  outline: 3px solid #ffd27a;
+  outline-offset: 4px;
+  transform: scale(1.03);
+}
+
+@media (max-width: 1024px) {
+  .scene {
+    width: min(94vw, 760px);
+  }
+
+  .tag {
+    font-size: 13px;
+    padding: 6px 11px;
+  }
+
+  .music-btn {
+    width: 58px;
+    height: 58px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding-top: 20px;
+    padding-bottom: 90px;
+  }
+
+  .scene {
+    width: 96vw;
+  }
+
+  .tag {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .music-box {
+    bottom: 14px;
+    left: 14px;
+    gap: 10px;
+  }
+
+  .music-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 12px;
+  }
+
+  .right-outside {
+    left: 95%;
+  }
+
+  .left-outside {
+    right: 95%;
+  }
+}
