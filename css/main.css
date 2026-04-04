@@ -1,265 +1,216 @@
-* {
-  box-sizing: border-box;
-}
 
 body {
   margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #493924;
-  font-family: Arial, sans-serif;
-  padding: 16px;
+}
+
+.h1 {
+  color: #e6d6ff;
+  background-color: #957be9;
+  font-family: "Bonbon", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  padding: 5px;
+  text-align: center;
 }
 
 .scene {
   position: relative;
-  width: min(92vw, 850px);
-  aspect-ratio: 1080 / 1600;
+  width: min(94vw, 1200px);
+  aspect-ratio: 4 / 3;
+  margin: 20px auto 40px;
 }
 
-.main {
+/* pastry containers */
+.pastry {
+  position: absolute;
+  cursor: pointer;
+}
+
+.pastry img {
   display: block;
   width: 100%;
   height: auto;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.bite {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-  z-index: 10;
+/* hover scale */
+.clickable:hover img,
+.clickable.show-tag img {
+  transform: scale(1.02);
 }
 
-.bite.show {
-  opacity: 1;
+/* croissant glow */
+.croissant:hover img,
+.croissant.show-tag img {
+  filter:
+    drop-shadow(0 0 6px #ffe7a3)
+    drop-shadow(0 0 16px #ffd27a)
+    drop-shadow(0 0 32px #ffc86b);
 }
 
-.hot {
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 20;
+/* tart glow */
+.tart:hover img,
+.tart.show-tag img {
+  filter:
+    drop-shadow(0 0 6px #ffc1cc)
+    drop-shadow(0 0 16px #ff8fa3)
+    drop-shadow(0 0 32px #ff6f91);
 }
 
-.hot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  opacity: 0;
-  background-color: #fff8dc;
-  box-shadow: 0 0 0 #fff8dc;
-  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  transform: scale(0.95);
+/* macaroon glow */
+.macaroon:hover img,
+.macaroon.show-tag img {
+  filter:
+    drop-shadow(0 0 6px #e6d6ff)
+    drop-shadow(0 0 16px #cdb4ff)
+    drop-shadow(0 0 32px #b8a2ff);
 }
 
-.hot:hover::before,
-.hot:focus-visible::before {
-  opacity: 0.25;
-  transform: scale(1.04);
-  box-shadow: 0 0 18px #ffd27a, 0 0 34px #ffc86b;
+/* madeline glow */
+.madeline:hover img,
+.madeline.show-tag img {
+  filter:
+    drop-shadow(0 0 6px #fff1b8)
+    drop-shadow(0 0 16px #ffe08a)
+    drop-shadow(0 0 32px #ffd166);
+}
+
+.pastry.bitten:hover {
+  filter: none;
+  cursor: default;
+}
+
+.pastry {
+  transition: transform 0.15s ease;
+}
+
+.pastry:active {
+  transform: scale(0.96);
+}
+
+.pastry.bitten {
+  animation: bitePop 0.2s ease;
+}
+
+@keyframes bitePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
 }
 
 .tag {
   position: absolute;
   opacity: 0;
-  background-color: #fff6e8;
-  color: #2f241d;
-  border: 2px solid #2f241d;
+  background: #ebcdff;
+  color: #89162b;
+  border: 2px solid #f0528f;
   border-radius: 999px;
-  padding: 7px 13px;
-  font-size: 14px;
-  font-weight: 700;
+  padding: 10px 16px;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 10;
   white-space: nowrap;
-  transition: opacity 0.25s ease, transform 0.25s ease;
   pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
   box-shadow: 0 6px 12px #00000033;
 }
 
-.hot:hover .tag,
-.hot:focus-visible .tag,
-.hot.show-tag .tag {
+.clickable:hover .tag,
+.clickable.show-tag .tag {
   opacity: 1;
 }
 
-.top-center {
+.label-top {
   top: -18px;
   left: 50%;
   transform: translateX(-50%) translateY(8px);
 }
 
-.hot:hover .top-center,
-.hot:focus-visible .top-center,
-.hot.show-tag .top-center {
+.label-left {
+  top: 25%;
+  right: 105%;
+  transform: translateY(8px);
+}
+
+.label-right {
+  top: 25%;
+  left: 105%;
+  transform: translateY(8px);
+}
+
+.clickable:hover .label-top,
+.clickable.show-tag .label-top {
   transform: translateX(-50%) translateY(0);
 }
 
-.left-inside {
-  top: 10%;
-  left: 10%;
-  transform: translateY(8px);
-}
-
-.hot:hover .left-inside,
-.hot:focus-visible .left-inside,
-.hot.show-tag .left-inside {
+.clickable:hover .label-left,
+.clickable.show-tag .label-left,
+.clickable:hover .label-right,
+.clickable.show-tag .label-right {
   transform: translateY(0);
 }
 
-.right-inside {
-  top: 10%;
-  left: 68%;
-  transform: translateY(8px);
+/* pastry positions */
+.c1 {
+  top: 5%;
+  left: 5%;
+  width: 22%;
 }
 
-.hot:hover .right-inside,
-.hot:focus-visible .right-inside,
-.hot.show-tag .right-inside {
-  transform: translateY(0);
+.c2 {
+  bottom: 8%;
+  right: 6%;
+  width: 22%;
 }
 
-.right-outside {
+.m1 {
+  bottom: 7%;
+  left: 8%;
+  width: 20%;
+}
+
+.m2 {
+  top: 7%;
+  right: 6%;
+  width: 20%;
+}
+
+.md1 {
   top: 30%;
-  left: 102%;
-  transform: translateY(8px);
+  left: 37%;
+  width: 13%;
 }
 
-.hot:hover .right-outside,
-.hot:focus-visible .right-outside,
-.hot.show-tag .right-outside {
-  transform: translateY(0);
+.md2 {
+  top: 43%;
+  right: 10%;
+  width: 13%;
 }
 
-.left-outside {
-  top: 18%;
-  right: 102%;
-  transform: translateY(8px);
-}
-
-.hot:hover .left-outside,
-.hot:focus-visible .left-outside,
-.hot.show-tag .left-outside {
-  transform: translateY(0);
-}
-
-/* hotspot positions */
 .tart {
-  top: 46%;
-  left: 12%;
-  width: 55%;
-  height: 34%;
-}
-
-.ctop {
-  top: 0%;
-  left: 50%;
-  width: 44%;
-  height: 25%;
-}
-
-.cbottom {
-  bottom: 2%;
-  left: 0%;
-  width: 35%;
-  height: 25%;
-}
-
-.mtop {
-  top: 24%;
-  right: 3%;
-  width: 28%;
-  height: 24%;
-}
-
-.mbottom {
-  bottom: 2%;
-  left: 45%;
-  width: 25%;
-  height: 18%;
-}
-
-.macleft {
-  top: 12%;
-  left: 0%;
-  width: 25%;
-  height: 25%;
-}
-
-.macright {
-  bottom: 0%;
-  right: 0%;
-  width: 25%;
-  height: 20%;
-}
-
-/* bite image positions */
-.bite-tart {
-  top: 46%;
-  left: 12%;
-  width: 55%;
-}
-
-.bite-ctop {
-  top: 0%;
-  left: 50%;
-  width: 44%;
-}
-
-.bite-cbottom {
-  bottom: 2%;
-  left: 0%;
-  width: 35%;
-}
-
-.bite-mtop {
-  top: 24%;
-  right: 3%;
-  width: 28%;
-}
-
-.bite-mbottom {
-  bottom: 2%;
-  left: 45%;
-  width: 25%;
-}
-
-.bite-macleft {
-  top: 12%;
-  left: 0%;
-  width: 25%;
-}
-
-.bite-macright {
-  bottom: 0%;
-  right: 0%;
-  width: 25%;
-}
-
-.music-box {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  gap: 12px;
-  z-index: 100;
+  bottom: 7%;
+  left: 39%;
+  width: 20%;
 }
 
 .music-btn {
-  width: 62px;
-  height: 62px;
+  font-size: 26px;
+  color: #e6d6ff;
+  background-color: #f0528f;
   border-radius: 50%;
-  border: 2px solid #ffffff;
-  background-color: #fff6e8;
-  color: #2f241d;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: outline 0.2s ease, transform 0.2s ease;
+  padding: 10px 14px;
+  box-shadow: 0 4px 10px #00000014;
+}
+
+.music-btn.muted::after {
+  content: "/";
+  position: absolute;
+  left: 8px;
+  top: 2px;
+  font-size: 32px;
+  transform: rotate(-25deg);
 }
 
 .music-btn:hover,
@@ -269,56 +220,88 @@ body {
   transform: scale(1.03);
 }
 
+/* tablet */
 @media (max-width: 1024px) {
-  .scene {
-    width: min(94vw, 760px);
+  .site-header h1 {
+    font-size: 1.9rem;
   }
 
   .tag {
     font-size: 13px;
-    padding: 6px 11px;
-  }
-
-  .music-btn {
-    width: 58px;
-    height: 58px;
-    font-size: 13px;
+    padding: 6px 10px;
   }
 }
 
+/* phone */
 @media (max-width: 768px) {
-  body {
-    align-items: flex-start;
-    padding-top: 20px;
-    padding-bottom: 90px;
+  .site-header h1 {
+    font-size: 1.4rem;
   }
 
   .scene {
     width: 96vw;
+    aspect-ratio: 3 / 4;
   }
 
-  .tag {
-    font-size: 12px;
-    padding: 6px 10px;
+  .c1 {
+    top: 6%;
+    left: 4%;
+    width: 28%;
   }
 
-  .music-box {
+  .m2 {
+    top: 8%;
+    right: 5%;
+    width: 26%;
+  }
+
+  .md1 {
+    top: 34%;
+    left: 31%;
+    width: 18%;
+  }
+
+  .md2 {
+    top: 47%;
+    right: 8%;
+    width: 18%;
+  }
+
+  .tart {
+    bottom: 17%;
+    left: 34%;
+    width: 28%;
+  }
+
+  .m1 {
+    bottom: 8%;
+    left: 6%;
+    width: 24%;
+  }
+
+  .c2 {
+    bottom: 7%;
+    right: 4%;
+    width: 26%;
+  }
+
+  .label-left {
+    right: 96%;
+  }
+
+  .label-right {
+    left: 96%;
+  }
+
+  .music {
     bottom: 14px;
     left: 14px;
     gap: 10px;
   }
 
-  .music-btn {
-    width: 54px;
-    height: 54px;
+  .music button {
+    width: 52px;
+    height: 52px;
     font-size: 12px;
-  }
-
-  .right-outside {
-    left: 95%;
-  }
-
-  .left-outside {
-    right: 95%;
   }
 }

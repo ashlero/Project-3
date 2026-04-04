@@ -1,44 +1,54 @@
-const pastryButtons = document.querySelectorAll(".hot");
+const pastries = document.querySelectorAll(".clickable");
 
-pastryButtons.forEach((button) => {
-  let tappedOnce = false;
+pastries.forEach((pastry) => {
+  const image = pastry.querySelector("img");
+  const defaultImage = pastry.dataset.default;
+  const biteImage = pastry.dataset.bite;
 
-  button.addEventListener("click", () => {
-    const biteClass = button.dataset.bite;
-    const biteImage = document.querySelector("." + biteClass);
+  let isBitten = false;
+  let firstTap = true;
 
-    if (!biteImage) {
-      console.log("No bite image found for:", biteClass);
+  pastry.addEventListener("click", () => {
+    const isTouchScreen = window.innerWidth <= 768;
+
+    if (isTouchScreen && firstTap) {
+      pastry.classList.add("show-tag");
+      firstTap = false;
       return;
     }
 
-    if (window.innerWidth <= 768 && !tappedOnce) {
-      button.classList.add("show-tag");
-      tappedOnce = true;
-      return;
+    if (isBitten) {
+      image.src = defaultImage;
+      isBitten = false;
+    } else {
+      image.src = biteImage;
+      isBitten = true;
     }
-
-    biteImage.classList.toggle("show");
   });
 });
 
-const music = document.getElementById("music");
-const playBtn = document.getElementById("playBtn");
-const muteBtn = document.getElementById("muteBtn");
+document.querySelectorAll(".pastry").forEach((pastry) => {
+  const biteSrc = pastry.dataset.bite;
 
-music.volume = 0.5;
+  pastry.addEventListener("click", () => {
+    if (pastry.classList.contains("bitten")) return;
 
-window.addEventListener("load", () => {
-  music.play().catch(() => {
-    console.log("Autoplay was blocked by the browser.");
+    pastry.src = biteSrc;
+    pastry.classList.add("bitten");
   });
 });
 
-playBtn.addEventListener("click", () => {
-  music.muted = false;
-  music.play();
-});
+const music = document.getElementById("bgMusic");
+const toggleBtn = document.getElementById("musicToggle");
 
-muteBtn.addEventListener("click", () => {
-  music.muted = true;
+toggleBtn.addEventListener("click", () => {
+
+  if (music.paused) {
+    music.play();
+    toggleBtn.classList.remove("muted");
+  } else {
+    music.pause();
+    toggleBtn.classList.add("muted");
+  }
+
 });

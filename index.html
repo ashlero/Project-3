@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title></title>
+  <title>Bon Appétite!</title>
   <meta name="description" content="This site will serve as the hub for many sub responsive layouts">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,65 +21,65 @@
 
   <meta name="theme-color" content="#fafafa">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bonbon&family=Pacifico&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
+  <header class="h1">
+    <h1>Bon Appétite! Pick a Pastry to Eat!</h1>
+  </header>
+
+  <background-img src="./img/bbcrumbs.png" class="base"></background-img>
   <div class="scene">
-    <img src="./img/pastries.png" alt="Illustrated pastries" class="main">
+      <div class="pastry clickable croissant c1" data-default="croissant-1.png" data-bite="img/croissant1-bite.png">
+      <img src="./img/croissant1.png">
+      <span class="tag">Try Me!</span>
+      </div>
 
-    <!-- Bite images -->
-    <img src="./img/strawberrytart-bite.png" alt="" class="bite bite-tart">
-    <img src="./img/croissant1-bite.png" alt="" class="bite bite-ctop">
-    <img src="./img/croissant2-bite.png" alt="" class="bite bite-cbottom">
-    <img src="./img/madeline2-bite.png" alt="" class="bite bite-mtop">
-    <img src="./img/madeline1-bite.png" alt="" class="bite bite-mbottom">
-    <img src="./img/macaroon1-bite.png" alt="" class="bite bite-macleft">
-    <img src="./img/macaroon2-bite.png" alt="" class="bite bite-macright">
+    <div class="pastry clickable croissant c2" data-default="croissant-2.png" data-bite="img/croissant2-bite.png">
+      <img src="./img/croissant2.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <!-- Hotspots -->
-    <button class="hot tart" data-bite="bite-tart" aria-label="Strawberry tart">
-      <span class="tag top-center">Try Me!</span>
-    </button>
+    <div class="pastry clickable macaroon m1" data-default="macaroon-1.png" data-bite="img/macaroon1-bite.png">
+      <img src="./img/macaroon1.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <button class="hot ctop" data-bite="bite-ctop" aria-label="Top croissant">
-      <span class="tag left-inside">Try Me!</span>
-    </button>
+    <div class="pastry clickable macaroon m2" data-default="macaroon-2.png" data-bite="img/macaroon2-bite.png">
+      <img src="./img/macaroon2.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <button class="hot cbottom" data-bite="bite-cbottom" aria-label="Bottom croissant">
-      <span class="tag right-inside">Try Me!</span>
-    </button>
+    <div class="pastry clickable madeline md1" data-default="madeline-1.png" data-bite="img/madeline1-bite.png">
+      <img src="./img/madeline1.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <button class="hot mtop" data-bite="bite-mtop" aria-label="Top madeleine cluster">
-      <span class="tag right-outside">Try Me!</span>
-    </button>
+    <div class="pastry clickable madeline md2" data-default="madeline-2.png" data-bite="img/madeline2-bite.png">
+      <img src="./img/madeline2.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <button class="hot mbottom" data-bite="bite-mbottom" aria-label="Bottom madeleine cluster">
-      <span class="tag top-center">Try Me!</span>
-    </button>
+    <div class="pastry clickable tart" data-default="tart.png" data-bite="img/tart-bite.png">
+      <img src="./img/tart.png">
+      <span class="tag">Try Me!</span>
+    </div>
 
-    <button class="hot macleft" data-bite="bite-macleft" aria-label="Left macaron cluster">
-      <span class="tag right-outside">Try Me!</span>
-    </button>
-
-    <button class="hot macright" data-bite="bite-macright" aria-label="Right macaron cluster">
-      <span class="tag left-outside">Try Me!</span>
-    </button>
   </div>
 
-  <audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+  <button id="musicToggle" class="music-btn">
+  <span id="musicIcon">♪</span>
+</button>
 
-  <div class="music-box">
-    <button id="playBtn" class="music-btn" aria-label="Play music">Play</button>
-    <button id="muteBtn" class="music-btn" aria-label="Mute music">Mute</button>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
+<audio id="bgMusic" loop>
+  <source src="music/background.mp3" type="audio/mp3">
+</audio>
+  
 <script src="js/main.js"></script>
 </body>
 </html>
