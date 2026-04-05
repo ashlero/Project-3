@@ -1,4 +1,3 @@
-
 const pastries = document.querySelectorAll(".clickable");
 const resetBtn = document.getElementById("resetBtn");
 
@@ -6,17 +5,17 @@ let bittenCount = 0;
 
 pastries.forEach((pastry) => {
   const image = pastry.querySelector("img");
-  const defaultImage = pastry.dataset.default;
   const biteImage = pastry.dataset.bite;
+  const defaultImage = pastry.dataset.default;
 
   let isBitten = false;
   let firstTap = true;
 
   pastry.addEventListener("click", () => {
-    const isTouchScreen = window.innerWidth <= 768;
+    const isTouchScreen = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
     if (isTouchScreen && firstTap) {
-      pastry.classList.add("show-tag");
+      pastry.classList.add("show-tag", "hovered");
       firstTap = false;
       return;
     }
@@ -26,6 +25,9 @@ pastries.forEach((pastry) => {
     image.src = biteImage;
     isBitten = true;
     pastry.classList.add("bitten");
+
+    pastry.classList.remove("show-tag", "hovered");
+
     bittenCount++;
 
     if (bittenCount === pastries.length) {
@@ -37,7 +39,7 @@ pastries.forEach((pastry) => {
     image.src = defaultImage;
     isBitten = false;
     firstTap = true;
-    pastry.classList.remove("bitten", "show-tag");
+    pastry.classList.remove("bitten", "show-tag", "hovered");
   };
 });
 
