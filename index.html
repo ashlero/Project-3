@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Bon Appétite!</title>
-  <meta name="description" content="This site will serve as the hub for many sub responsive layouts">
+  <meta name="description" content="Pick a pastry, take a bite, and enjoy a little moment of sweetness.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:title" content="">
@@ -13,8 +13,7 @@
   <meta property="og:image" content="">
 
   <link rel="manifest" href="site.webmanifest">
-  <link rel="icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" href="./img/icon.png">
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
@@ -28,57 +27,58 @@
 </head>
 
 <body>
+  <p class="enjoy">yum! the pastries are ready to eat</p>
+  <div class="top-bar">
+    <h1 class="bounce-title">Bon Appétite!</h1>
 
-  <header class="h1">
-    <h1>Bon Appétite! Pick a Pastry to Eat!</h1>
-  </header>
+    <button id="musicToggle" class="music-btn" aria-label="Toggle music">
+      <span class="music-icon">♪</span>
+    </button>
+  </div>
 
-  <background-img src="./img/bbcrumbs.png" class="base"></background-img>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="./img/music.mp4" type="audio/mp4">
+  </audio>
+
   <div class="scene">
-      <div class="pastry clickable croissant c1" data-default="croissant-1.png" data-bite="img/croissant1-bite.png">
+      <div class="pastry clickable croissant c1" data-default="img/croissant1.png" data-bite="img/croissant1-bite.png">
       <img src="./img/croissant1.png">
       <span class="tag">Try Me!</span>
       </div>
 
-    <div class="pastry clickable croissant c2" data-default="croissant-2.png" data-bite="img/croissant2-bite.png">
+    <div class="pastry clickable croissant c2" data-default="img/croissant2.png" data-bite="img/croissant2-bite.png">
       <img src="./img/croissant2.png">
       <span class="tag">Try Me!</span>
     </div>
 
-    <div class="pastry clickable macaroon m1" data-default="macaroon-1.png" data-bite="img/macaroon1-bite.png">
+    <div class="pastry clickable macaroon m1" data-default="img/macaroon1.png" data-bite="img/macaroon1-bite.png">
       <img src="./img/macaroon1.png">
       <span class="tag">Try Me!</span>
     </div>
 
-    <div class="pastry clickable macaroon m2" data-default="macaroon-2.png" data-bite="img/macaroon2-bite.png">
+    <div class="pastry clickable macaroon m2" data-default="img/macaroon2.png" data-bite="img/macaroon2-bite.png">
       <img src="./img/macaroon2.png">
       <span class="tag">Try Me!</span>
     </div>
 
-    <div class="pastry clickable madeline md1" data-default="madeline-1.png" data-bite="img/madeline1-bite.png">
+    <div class="pastry clickable madeline md1" data-default="img/madeline1.png" data-bite="img/madeline1-bite.png">
       <img src="./img/madeline1.png">
       <span class="tag">Try Me!</span>
     </div>
 
-    <div class="pastry clickable madeline md2" data-default="madeline-2.png" data-bite="img/madeline2-bite.png">
+    <div class="pastry clickable madeline md2" data-default="img/madeline2.png" data-bite="img/madeline2-bite.png">
       <img src="./img/madeline2.png">
       <span class="tag">Try Me!</span>
     </div>
 
-    <div class="pastry clickable tart" data-default="tart.png" data-bite="img/tart-bite.png">
+    <div class="pastry clickable tart" data-default="img/tart.png" data-bite="img/tart-bite.png">
       <img src="./img/tart.png">
       <span class="tag">Try Me!</span>
     </div>
 
+    <button id="resetBtn" class="reset-btn">I'm full</button>
+
   </div>
-
-  <button id="musicToggle" class="music-btn">
-  <span id="musicIcon">♪</span>
-</button>
-
-<audio id="bgMusic" loop>
-  <source src="music/background.mp3" type="audio/mp3">
-</audio>
   
 <script src="js/main.js"></script>
 </body>

@@ -1,30 +1,120 @@
 
 body {
   margin: 0;
+  background-color: #48301b;
+  min-height: 100vh;
+  padding-top: 140px;
 }
 
-.h1 {
+.enjoy {
+  position: fixed;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
   color: #e6d6ff;
-  background-color: #957be9;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 25px;
+  text-align: center;
+  z-index: 1001;
+}
+
+.top-bar {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.bounce-title {
+  margin: 0;
+  color: #e6d6ff;
   font-family: "Bonbon", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px;
-  padding: 5px;
+  font-size: 50px;
   text-align: center;
+  padding: 12px;
+  width: 100%;
+  pointer-events: auto;
 }
+
+.music-btn {
+  position: fixed;
+  top: 78px;
+  right: 24px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 1002;
+}
+
+.bounce-title span {
+  display: inline-block;
+  transform: translateY(-70px);
+  opacity: 0;
+  animation:
+    bounceIn 1s forwards,
+    bounceLoop 2.6s infinite ease-in-out;
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(14px);
+  }
+
+  80% {
+    transform: translateY(-6px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceLoop {
+  0%, 85%, 100% {
+    transform: translateY(0);
+  }
+
+  92% {
+    transform: translateY(-8px);
+  }
+
+  96% {
+    transform: translateY(4px);
+  }
+}
+
 
 .scene {
   position: relative;
   width: min(94vw, 1200px);
   aspect-ratio: 4 / 3;
   margin: 20px auto 40px;
+  z-index: 1;
 }
 
-/* pastry containers */
 .pastry {
   position: absolute;
   cursor: pointer;
+  z-index: 1;
 }
 
 .pastry img {
@@ -34,13 +124,11 @@ body {
   transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-/* hover scale */
 .clickable:hover img,
 .clickable.show-tag img {
   transform: scale(1.02);
 }
 
-/* croissant glow */
 .croissant:hover img,
 .croissant.show-tag img {
   filter:
@@ -49,7 +137,6 @@ body {
     drop-shadow(0 0 32px #ffc86b);
 }
 
-/* tart glow */
 .tart:hover img,
 .tart.show-tag img {
   filter:
@@ -58,7 +145,6 @@ body {
     drop-shadow(0 0 32px #ff6f91);
 }
 
-/* macaroon glow */
 .macaroon:hover img,
 .macaroon.show-tag img {
   filter:
@@ -67,7 +153,6 @@ body {
     drop-shadow(0 0 32px #b8a2ff);
 }
 
-/* madeline glow */
 .madeline:hover img,
 .madeline.show-tag img {
   filter:
@@ -91,7 +176,12 @@ body {
 
 .pastry.bitten {
   animation: bitePop 0.2s ease;
+  pointer-events: none;
+  cursor: default;
+  filter: none;
 }
+
+
 
 @keyframes bitePop {
   0% { transform: scale(1); }
@@ -110,7 +200,7 @@ body {
   font-family: "Pacifico", cursive;
   font-weight: 400;
   font-style: normal;
-  font-size: 10;
+  font-size: 10px;
   white-space: nowrap;
   pointer-events: none;
   transition: opacity 0.25s ease, transform 0.25s ease;
@@ -152,77 +242,70 @@ body {
   transform: translateY(0);
 }
 
-/* pastry positions */
 .c1 {
-  top: 5%;
-  left: 5%;
-  width: 22%;
+  top: 7%;
+  left: 2%;
+  width: 27%;
 }
 
 .c2 {
-  bottom: 8%;
-  right: 6%;
-  width: 22%;
+  bottom: 7%;
+  right: 7%;
+  width: 25%;
 }
 
 .m1 {
-  bottom: 7%;
-  left: 8%;
-  width: 20%;
+  bottom: 2%;
+  left: 5%;
+  width: 28%;
 }
 
 .m2 {
-  top: 7%;
-  right: 6%;
-  width: 20%;
+  top: 4%;
+  right: 1%;
+  width: 32%;
 }
 
 .md1 {
-  top: 30%;
-  left: 37%;
-  width: 13%;
-}
-
-.md2 {
-  top: 43%;
+  top: 29%;
   right: 10%;
-  width: 13%;
-}
-
-.tart {
-  bottom: 7%;
-  left: 39%;
   width: 20%;
 }
 
-.music-btn {
-  font-size: 26px;
+.md2 {
+  top: 5%;
+  left: 30%;
+  width: 22%;
+}
+
+.tart {
+  bottom: 17%;
+  left: 32%;
+  width: 36%;
+}
+
+.music-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 30px;
+  line-height: 1;
   color: #e6d6ff;
-  background-color: #f0528f;
-  border-radius: 50%;
-  padding: 10px 14px;
-  box-shadow: 0 4px 10px #00000014;
 }
 
-.music-btn.muted::after {
-  content: "/";
+.music-btn.muted .music-icon::after {
+  content: "";
   position: absolute;
-  left: 8px;
-  top: 2px;
-  font-size: 32px;
-  transform: rotate(-25deg);
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 2px;
+  background: #89162b;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  transform-origin: center;
 }
 
-.music-btn:hover,
-.music-btn:focus-visible {
-  outline: 3px solid #ffd27a;
-  outline-offset: 4px;
-  transform: scale(1.03);
-}
-
-/* tablet */
 @media (max-width: 1024px) {
-  .site-header h1 {
+  .top-bar {
     font-size: 1.9rem;
   }
 
@@ -232,10 +315,30 @@ body {
   }
 }
 
-/* phone */
 @media (max-width: 768px) {
-  .site-header h1 {
-    font-size: 1.4rem;
+  body {
+    padding-top: 120px;
+  }
+
+  .enjoy {
+    top: 12px;
+    font-size: 18px;
+    width: 90%;
+  }
+
+  .top-bar {
+    top: 40px;
+  }
+
+  .bounce-title {
+    font-size: 38px;
+    padding: 8px;
+  }
+
+  .music-btn {
+    top: 52px;
+    right: 14px;
+    font-size: 22px;
   }
 
   .scene {
@@ -244,45 +347,45 @@ body {
   }
 
   .c1 {
-    top: 6%;
-    left: 4%;
-    width: 28%;
-  }
-
-  .m2 {
-    top: 8%;
-    right: 5%;
-    width: 26%;
-  }
-
-  .md1 {
-    top: 34%;
-    left: 31%;
-    width: 18%;
-  }
-
-  .md2 {
-    top: 47%;
-    right: 8%;
-    width: 18%;
-  }
-
-  .tart {
-    bottom: 17%;
-    left: 34%;
-    width: 28%;
-  }
-
-  .m1 {
-    bottom: 8%;
-    left: 6%;
-    width: 24%;
+    top: 2%;
+    left: 2%;
+    width: 35%;
   }
 
   .c2 {
-    bottom: 7%;
+    bottom: 17%;
     right: 4%;
-    width: 26%;
+    width: 36%;
+  }
+
+  .m1 {
+    bottom: 14%;
+    left: 6%;
+    width: 34%;
+  }
+
+  .m2 {
+    top: 2%;
+    right: 0%;
+    width: 40%;
+  }
+
+  .md1 {
+    top: 32%;
+    right: 5%;
+    width: 27%;
+  }
+
+  .md2 {
+    top: 10%;
+    left: 35%;
+    width: 27%;
+  }
+
+  .tart {
+    bottom: 33%;
+    left: 24%;
+    width: 48%;
   }
 
   .label-left {
@@ -292,16 +395,29 @@ body {
   .label-right {
     left: 96%;
   }
+}
 
-  .music {
-    bottom: 14px;
-    left: 14px;
-    gap: 10px;
-  }
+.reset-btn {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  color: #f0528f;
+  border-radius: 30px;
+  border: 2px solid #e86a92;
+  background: #ffc1cc;
+  cursor: pointer;
+}
 
-  .music button {
-    width: 52px;
-    height: 52px;
-    font-size: 12px;
-  }
+.reset-btn.show {
+  opacity: 1;
+  pointer-events: auto;
 }
